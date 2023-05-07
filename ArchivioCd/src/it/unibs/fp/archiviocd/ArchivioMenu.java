@@ -6,8 +6,8 @@ import it.unibs.fp.mylib.MyMenu;
  *
  */
 public class ArchivioMenu extends MyMenu{
-	private String titolo = " Opzioni per la gestione della mia collezione";
-	  private String [] voci = {"Inserire nuovo CD alla mia collezione", "Eliminare CD dalla collezione", 
+	private String titolo = " Opzioni per la gestione della collezione";
+	  private String [] voci = {"Inserire nuovo CD alla collezione", "Eliminare CD dalla collezione", 
 			  "Visualizzare intera collezione ", "Riprodurre un brano a caso"};
 	/**
 	 * costruttore 
