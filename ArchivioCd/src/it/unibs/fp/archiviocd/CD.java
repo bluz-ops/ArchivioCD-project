@@ -5,19 +5,21 @@ import it.unibs.fp.mylib.InputDati;
 import it.unibs.fp.mylib.NumeriCasuali;
 
 /**
- * 
- * @author Molla Blen
+ * Questa classe crea l'oggetto CD, ogni CD contiene una collezione di brani
+ * Sono forniti metodi per aggiungere brani ad un CD istanziato, per creare una lista di brani casuali
+ * da riprodurre, metodo per la ricerca di brani all' interno di un CD
+ * @author Molla Blen Zena
  *
  */
 public class CD {
-	public static final String MSG_AGGIUNTA_SUCCESSO = "Brano %s aggiunto alla lista con successo";
 	//attributi
 	private String titoloCD;
 	private String autore;
 	private ArrayList <Brano> listaBrani= new ArrayList<Brano>();
 	
-	//costruttore
+	
 	/**
+	 * costruttore
 	 * @param titolo del CD
 	 * @param autore del CD
 	 * @param listaBrani contenuti nel CD
@@ -38,37 +40,43 @@ public class CD {
 	 * 
 	 * @param inserimento
 	 */
+	
+	/*
 	public void aggiungiBranoAllaLista(Brano inserimento) {
-		/*System.out.println("Funzionalita' Aggiunta Brano");
-		ìinserimento.titolo= InputDati.leggiStringaNonVuota("Inserisci titolo:"); */
+		System.out.println("Funzionalita' Aggiunta Brano");
+		inserimento.titolo= InputDati.leggiStringaNonVuota("Inserisci titolo:");
 		listaBrani.add(inserimento);
-		System.out.println(MSG_AGGIUNTA_SUCCESSO, inserimento.titolo);
-	}
+		System.out.printf(MSG_AGGIUNTA_SUCCESSO, inserimento.getTitolo());
+	} 
+	*/
+	
+
 	/**
-	 * metodo piu specializzato di branoCasuale
+	 * metodo che ritorna 3 brani casuali da riprodurre da un CD casuale
 	 * @return braniToShuffle una lista di brani casuali da riprodurre
 	 */
 	public ArrayList<Brano> ShuffleBrani() {
 		ArrayList<Brano> braniToShuffle = new ArrayList<Brano>();
-		int numBraniRandom= InputDati.leggiIntero("Quanti brani vuoi ascoltare?");
-		for (int i=0; i<=numBraniRandom; i++) {
+		int numBraniRandom= 3; //InputDati.leggiIntero("Quanti brani vuoi ascoltare?");
+		for (int i=0; i<numBraniRandom; i++) {
 			int indexBranoRandom = NumeriCasuali.estraiIntero(0, listaBrani.size());
 			braniToShuffle.add(listaBrani.get(indexBranoRandom));	
 		}
 		return braniToShuffle;
 	}
+	
 	/**
 	 * 
 	 * @param cercato
-	 * @return
+	 * @return true if brano appartiene al CD
 	 */
 	public boolean cercaBranoPerTitolo(String cercato) {
 		for (Brano i: listaBrani) {
-			if (cercato.equalsIgnoreCase(Brano.GetTitolo)) {
+			if (cercato.equalsIgnoreCase(i.getTitolo())) {
 				return true;
 			}
-			else return false;
 		}
+		return false;
 	}
 	/**
 	 * 
@@ -76,11 +84,12 @@ public class CD {
 	@Override
 	public String toString() {
 		StringBuffer descrizione = new StringBuffer();
-		descrizione.append("Titolo del CD:" + titoloCD + "Autore:" + autore);
-		descrizione.append("Lista Brani:");
+		descrizione.append("Titolo del CD:" + titoloCD + "\nAutore:" + autore);
+		descrizione.append("\n\nLista Brani:\n");
 		for(Brano i:listaBrani) {
-			descrizione.append(i.GetTitolo);
-			System.out.print("\n");
+			descrizione.append("brano " + i.getTitolo() + "\n");
+			descrizione.append("durata " + i.getDurata() + "\n");
+			descrizione.append("\n");
 		}
 		return descrizione.toString();
 	}

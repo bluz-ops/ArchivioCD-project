@@ -10,23 +10,19 @@ public class CDMain {
 		private static final String SALUTO = "Benvenuto \n";
 		private static final String RICHIESTA= "Come vuoi chiamare il tuo archivio?\n";
 		private static String [] voci = {"Inserire nuovo CD alla collezione", "Eliminare CD dalla collezione", 
-				  "Visualizzare intera collezione ", "Riprodurre un brano a caso"};
+				  "Visualizzare intera collezione ", "Riprodurre brani a caso da CD a caso"};
 		
-		 
-		public static void main (String[] args) {
+		public static void main (String[] args) {	
 			
 		System.out.println(SALUTO);
+		// istanza di ArchivioCD
+		ArchivioCD archivio1= new ArchivioCD();
 		
 		int scelta=0;
-		
-		MyMenu principale= creaMenuPrincipale();
-		
-		
-		
-		ArchivioCD archivio1= new ArchivioCD("Titolo archivio");
+		MyMenu menuPrincipale= creaMenuPrincipale();
 		
 		do {
-			scelta = principale.scegli();
+			scelta = menuPrincipale.scegli();
 			switch (scelta) {
 			
 			case 1:
@@ -45,22 +41,24 @@ public class CDMain {
 				break;
 				
 			case 4:
-				// Riproduce un brano a caso
+				// Riproduce una lista di brani a caso
 				archivio1.riproduciCDaCaso();
 				break;
 				
 			default:
 				break;
 			}
-			System.out.println("puzzi");
+			// System.out.println("");
 
 		} while (scelta != 0);
 		
 		
 		
 	}
-
-		
+		/**
+		 * metodo che crea un'istanza della classe MyMenu
+		 * @return MyMenu
+		 */
 		public static MyMenu creaMenuPrincipale() {
 			String titolo = InputDati.leggiStringaNonVuota(RICHIESTA);
 			return new MyMenu(titolo, voci);
