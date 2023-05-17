@@ -36,11 +36,11 @@ public class CD {
 	}
 	
 	//metodi
+	
 	/**
 	 * 
 	 * @param inserimento
 	 */
-	
 	/*
 	public void aggiungiBranoAllaLista(Brano inserimento) {
 		System.out.println("Funzionalita' Aggiunta Brano");
@@ -53,6 +53,7 @@ public class CD {
 
 	/**
 	 * metodo che ritorna 3 brani casuali da riprodurre da un CD casuale
+	 * viene richiamato da un altro metodo in ArchivioCD
 	 * @return braniToShuffle una lista di brani casuali da riprodurre
 	 */
 	public ArrayList<Brano> ShuffleBrani() {
@@ -68,7 +69,7 @@ public class CD {
 	/**
 	 * 
 	 * @param cercato
-	 * @return true if brano appartiene al CD
+	 * @return true if brano appartiene alla collezione
 	 */
 	public boolean cercaBranoPerTitolo(String cercato) {
 		for (Brano i: listaBrani) {
@@ -78,8 +79,9 @@ public class CD {
 		}
 		return false;
 	}
+	
 	/**
-	 * 
+	 * stringa descrittiva
 	 */
 	@Override
 	public String toString() {

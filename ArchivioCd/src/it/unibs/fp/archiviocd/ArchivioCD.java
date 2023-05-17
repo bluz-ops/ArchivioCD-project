@@ -11,7 +11,17 @@ import it.unibs.fp.mylib.InputDati;
 
 
 public class ArchivioCD {
-	
+	public static final String MSG_ELIMINAZIONE_SUCCESSO = "%s e' stato eliminato dall'archivio con successo\n";
+	public static final String MSG_CD_DA_ELIMINARE = "\nInserire il nome del CD da eliminare";
+	public static final String MSG_TERMINAZIONE_LISTA = "La lista di brani casuali è terminata.";
+	public static final String MSG_DURATA_BRANO = "Quanti minuti dura questo brano? ";
+	public static final String MSG_TIT_BRANO = "Come si intitola questo brano? ";
+	public static final String MSG_INSERIMENTO_BRANI = "Ora dovresti inserire i brani del tuo CD\n";
+	public static final String MSG_AUTORE_CD = "Chi è l'autore di questo CD?";
+	public static final String MSG_REINSERIMENTO_TITOLO_CD = "Esiste gia' un CD dello stesso nome,"
+			+ "\ninserisci un nuovo CD";
+	public static final String MSG_TITOLO_CD = "Come vuoi chiamare questo CD?";
+	//attributi
 	private String nomeArchivio;
 	private ArrayList<CD>listaCD= new ArrayList<CD> () ;
 	private int cdIndex;
@@ -25,6 +35,7 @@ public class ArchivioCD {
 	private static String [] vociEditorBrani = {"Inserire nuovo brano al CD"};
 	public static final String MSG_AGGIUNTA_SUCCESSO = "\nBrano %s aggiunto alla lista con successo\n";
 	
+	//costruttori
 	public ArchivioCD() {
 	}
 
@@ -34,7 +45,7 @@ public class ArchivioCD {
 	}
 
 	/**
-	 * inserisce CD all'archivioCD
+	 * inserisce un nuovo CD all'archivioCD
 	 */
 	public void inserisciCD () {
 		CD cdDaInserire= creaCD();
@@ -42,56 +53,55 @@ public class ArchivioCD {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * crea un CD chiedendo all'utente titolo ed autore
+	 * @return CD
 	 */
 	public CD creaCD () {
-		titoloCDInserito= InputDati.leggiStringaNonVuota("Come vuoi chiamare questo CD?");
+		titoloCDInserito= InputDati.leggiStringaNonVuota(MSG_TITOLO_CD);
 		// controllo sul titolo del CD
 		for(CD i: listaCD) {
 			if (titoloCDInserito.equalsIgnoreCase(i.getTitoloCD())) {
-				titoloCDInserito= InputDati.leggiStringa("Esiste gia' un CD dello stesso nome,"
-						+ "\ninserisci un nuovo CD");
+				titoloCDInserito= InputDati.leggiStringa(MSG_REINSERIMENTO_TITOLO_CD);
 			}	
 		}
-		autoreCDInserito= InputDati.leggiStringaNonVuota("Chi è l'autore di questo CD?");
+		autoreCDInserito= InputDati.leggiStringaNonVuota(MSG_AUTORE_CD);
 		return new CD(titoloCDInserito, autoreCDInserito, creaListaBrani());
 	}
 	/**
-	 * 
+	 * ritorna un arraylist contenente i brani inseriti in un ciclo interattivo con l'utente
 	 * @return
 	 */
 	public ArrayList<Brano> creaListaBrani () {
 		MyMenu editorBrani= new MyMenu("EditorBrani", vociEditorBrani);
-		System.out.println("Ora dovresti inserire i brani del tuo CD\n");
+		System.out.println(MSG_INSERIMENTO_BRANI);
 		
 		do {
 		sceltaMenuBrani= editorBrani.scegli();
 		switch (sceltaMenuBrani) {
 		
 		case 1:
-		titoloBranoInserito= InputDati.leggiStringaNonVuota("Come si intitola questo brano? ");	
-		durataBranoInserito= InputDati.leggiDouble("Quanti minuti dura questo brano? ");
+		titoloBranoInserito= InputDati.leggiStringaNonVuota(MSG_TIT_BRANO);	
+		durataBranoInserito= InputDati.leggiDouble(MSG_DURATA_BRANO);
 		Brano branoDaInserire= new Brano(titoloBranoInserito, durataBranoInserito);
 		listaBraniInCreazione.add(branoDaInserire);
 		System.out.printf(MSG_AGGIUNTA_SUCCESSO, branoDaInserire.getTitolo());
 			break;
 		default: 
-			break; 
-		} 
-			} while (sceltaMenuBrani!=0);
+			break;
+			} 
+		} while (sceltaMenuBrani!=0);
 		return listaBraniInCreazione;
 	}
     
     /**
-     * 
+     * visualizza il contenuto di un CD
      * @param listaDaVisualizzare
      */
     public void visualizzaListaBrani(ArrayList<Brano> listaDaVisualizzare) {
     	for (branoIndex=0; branoIndex < listaDaVisualizzare.size(); branoIndex++) {
     		visualizzaBrano(listaDaVisualizzare.get(branoIndex));
     	}
-    	System.out.println("La lista di brani casuali è terminata.");
+    	System.out.println(MSG_TERMINAZIONE_LISTA);
     }
     
     
@@ -112,24 +122,23 @@ public class ArchivioCD {
     
     
     /**
-     * 
+     * elimina un cd intero dall'archivio
      */
     public void eliminaCD() {
-    	titoloCDInserito= InputDati.leggiStringaNonVuota("\nInserire il nome del CD da eliminare");
+    	titoloCDInserito= InputDati.leggiStringaNonVuota(MSG_CD_DA_ELIMINARE);
 		cdIndex=0;
 		while (cdIndex<listaCD.size()) {
 			if (listaCD.get(cdIndex).getTitoloCD().equalsIgnoreCase(titoloCDInserito)) {
 				listaCD.remove(cdIndex);
 			}
 			cdIndex=cdIndex+1;
-			System.out.printf("%s e' stato eliminato dall'archivio con successo\n", titoloCDInserito);
+			System.out.printf(MSG_ELIMINAZIONE_SUCCESSO, titoloCDInserito);
 		}
 		
 	}
 	
-    //non compila
     /**
-     * 
+     * riproduce 3 brani a caso di un cd preso a caso tra quelli presenti nell'archivio
      */
     public void riproduciCDaCaso () {
     	int cdIndex = NumeriCasuali.estraiIntero(0, listaCD.size());
@@ -137,7 +146,7 @@ public class ArchivioCD {
 	}
     
     /**
-     * 
+     * visualizza l'intero archivio
      */
     public void visualizzaCollezione() {
     	for (CD i: listaCD) {
