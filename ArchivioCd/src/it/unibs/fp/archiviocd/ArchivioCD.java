@@ -68,6 +68,7 @@ public class ArchivioCD {
 		do {
 		sceltaMenuBrani= editorBrani.scegli();
 		switch (sceltaMenuBrani) {
+		
 		case 1:
 		titoloBranoInserito= InputDati.leggiStringaNonVuota("Come si intitola questo brano? ");	
 		durataBranoInserito= InputDati.leggiDouble("Quanti minuti dura questo brano? ");

@@ -10,7 +10,7 @@ public class CDMain {
 		private static final String SALUTO = "Benvenuto \n";
 		private static final String RICHIESTA= "Come vuoi chiamare il tuo archivio?\n";
 		private static String [] voci = {"Inserire nuovo CD alla collezione", "Eliminare CD dalla collezione", 
-				  "Visualizzare intera collezione ", "Riprodurre brani a caso da CD a caso"};
+				  "Visualizzare intera collezione ", "Riprodurre 3 brani a caso da CD a caso"};
 		
 		public static void main (String[] args) {	
 			
@@ -42,6 +42,7 @@ public class CDMain {
 				
 			case 4:
 				// Riproduce una lista di brani a caso
+				System.out.println("ATTENZIONE: fare almeno 3 inserimenti per cd");
 				archivio1.riproduciCDaCaso();
 				break;
 				

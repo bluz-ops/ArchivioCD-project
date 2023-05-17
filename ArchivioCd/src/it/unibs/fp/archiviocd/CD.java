@@ -88,7 +88,7 @@ public class CD {
 		descrizione.append("\n\nLista Brani:\n");
 		for(Brano i:listaBrani) {
 			descrizione.append("brano " + i.getTitolo() + "\n");
-			descrizione.append("durata " + i.getDurata() + "\n");
+			descrizione.append("durata " + i.getDurata() + " min\n");
 			descrizione.append("\n");
 		}
 		return descrizione.toString();
