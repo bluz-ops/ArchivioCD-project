@@ -7,22 +7,34 @@ package it.unibs.fp.archiviocd;
 public class Brano {
 		//attributi
 		private String titolo;
-		private double durata;
+		private int duratam;
+		private int duratas;
 		
-		//costruttori
-		public Brano(String titolo, double durata) {
+		//costruttore
+		/**
+		 * @param titolo
+		 * @param duratam
+		 * @param duratas
+		 */
+		public Brano(String titolo, int duratam, int duratas) {
 			this.titolo = titolo;
-			this.durata = durata;
+			this.duratam = duratam;
+			this.duratas = duratas;
 		}
-		
+
 		//getters
 		public String getTitolo() {
 			return titolo;
 		}
-
-		public double getDurata() {
-			return durata;
+		
+		public int getDuratam() {
+			return duratam;
 		}
+
+		public int getDuratas() {
+			return duratas;
+		}
+		
 		/**
 		 * toString sovrascrive il metodo toString della classe object
 		 * restituisce una stringa descrittiva
@@ -30,7 +42,7 @@ public class Brano {
 		@Override
 		public String toString(){
 			StringBuffer descrizione = new StringBuffer();
-			descrizione.append("Titolo del Brano: "+titolo+ "\nDurata:" +durata);
+			descrizione.append(""+titolo+ " [0" +duratam+ ":"+ duratas+ "]");
 			return descrizione.toString();
 		}
 }

@@ -14,7 +14,8 @@ public class ArchivioCD {
 	public static final String MSG_ELIMINAZIONE_SUCCESSO = "%s e' stato eliminato dall'archivio con successo\n";
 	public static final String MSG_CD_DA_ELIMINARE = "\nInserire il nome del CD da eliminare";
 	public static final String MSG_TERMINAZIONE_LISTA = "La lista di brani casuali è terminata.";
-	public static final String MSG_DURATA_BRANO = "Quanti minuti dura questo brano? ";
+	public static final String MSG_DURATA_BRANO_M = "Durata minuti formato[min:sec] ";
+	public static final String MSG_DURATA_BRANO_S = "Durata secondi formato[min:sec] ";
 	public static final String MSG_TIT_BRANO = "Come si intitola questo brano? ";
 	public static final String MSG_INSERIMENTO_BRANI = "Ora dovresti inserire i brani del tuo CD\n";
 	public static final String MSG_AUTORE_CD = "Chi è l'autore di questo CD?";
@@ -28,8 +29,8 @@ public class ArchivioCD {
 	private int branoIndex;
 	private static String titoloCDInserito;
 	private static String autoreCDInserito;
-	private static String titoloBranoInserito;
-	private static double durataBranoInserito;
+	// private static String titoloBranoInserito;
+	// private static double durataBranoInserito;
 	private ArrayList <Brano> listaBraniInCreazione= new ArrayList<Brano>();
 	private int sceltaMenuBrani=0;
 	private static String [] vociEditorBrani = {"Inserire nuovo brano al CD"};
@@ -80,9 +81,10 @@ public class ArchivioCD {
 		switch (sceltaMenuBrani) {
 		
 		case 1:
-		titoloBranoInserito= InputDati.leggiStringaNonVuota(MSG_TIT_BRANO);	
-		durataBranoInserito= InputDati.leggiDouble(MSG_DURATA_BRANO);
-		Brano branoDaInserire= new Brano(titoloBranoInserito, durataBranoInserito);
+		String titoloBranoInserito= InputDati.leggiStringaNonVuota(MSG_TIT_BRANO);	
+		int durataM= InputDati.leggiIntero(MSG_DURATA_BRANO_M);
+		int durataS= InputDati.leggiIntero(MSG_DURATA_BRANO_S);
+		Brano branoDaInserire= new Brano(titoloBranoInserito, durataM, durataS);
 		listaBraniInCreazione.add(branoDaInserire);
 		System.out.printf(MSG_AGGIUNTA_SUCCESSO, branoDaInserire.getTitolo());
 			break;

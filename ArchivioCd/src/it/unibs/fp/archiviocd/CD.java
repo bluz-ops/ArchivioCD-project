@@ -44,12 +44,11 @@ public class CD {
 	/*
 	public void aggiungiBranoAllaLista(Brano inserimento) {
 		System.out.println("Funzionalita' Aggiunta Brano");
-		inserimento.titolo= InputDati.leggiStringaNonVuota("Inserisci titolo:");
+		inserimento.getTitolo() = InputDati.leggiStringaNonVuota("Inserisci titolo:");
 		listaBrani.add(inserimento);
 		System.out.printf(MSG_AGGIUNTA_SUCCESSO, inserimento.getTitolo());
 	} 
 	*/
-	
 
 	/**
 	 * metodo che ritorna 3 brani casuali da riprodurre da un CD casuale
@@ -89,8 +88,9 @@ public class CD {
 		descrizione.append("Titolo del CD:" + titoloCD + "\nAutore:" + autore);
 		descrizione.append("\n\nLista Brani:\n");
 		for(Brano i:listaBrani) {
+			/*System.out.println(i.toString());; */
 			descrizione.append("brano " + i.getTitolo() + "\n");
-			descrizione.append("durata " + i.getDurata() + " min\n");
+			descrizione.append("durata " + i.getDuratam() + ":"+ i.getDuratas()+ "\n");
 			descrizione.append("\n");
 		}
 		return descrizione.toString();
