@@ -5,7 +5,11 @@ import it.unibs.fp.mylib.NumeriCasuali;
 import it.unibs.fp.mylib.InputDati;
 /**
  * 
- * @author Stocchetti Daian 
+ * @author Stocchetti Daian e Molla Blen Zena 
+ *
+ * Questa classe rappresenta una collezione di CD contenenti brani e si interfaccia alle relative classi.
+ * Sono presenti metodi per la creazione di un nuovo CD e della sua lista di brani, la visualizzazione dei contenuti di un CD,
+ * l'eliminazione di un CD, la riproduzione di una playlist casuale di brani, la visualizzazione dell'intera collezione.
  *
  */
 
@@ -46,7 +50,7 @@ public class ArchivioCD {
 	}
 
 	/**
-	 * inserisce un nuovo CD all'archivioCD
+	 * Inserisce un nuovo CD nell'archivio appoggiandosi al metodo creaCD.
 	 */
 	public void inserisciCD () {
 		CD cdDaInserire= creaCD();
@@ -54,8 +58,10 @@ public class ArchivioCD {
 	}
 	
 	/**
-	 * crea un CD chiedendo all'utente titolo ed autore
-	 * @return CD
+	 *Metodo che raccoglie dall'utente tutti i dati necessari per la creazione
+	 * di una nuova istanza di tipo CD. Per ottenere la lista dei brani chiama 
+	 * il metodo creaListaBrani.
+	 * @return new CD (...)
 	 */
 	public CD creaCD () {
 		titoloCDInserito= InputDati.leggiStringaNonVuota(MSG_TITOLO_CD);
@@ -69,8 +75,8 @@ public class ArchivioCD {
 		return new CD(titoloCDInserito, autoreCDInserito, creaListaBrani());
 	}
 	/**
-	 * ritorna un arraylist contenente i brani inseriti in un ciclo interattivo con l'utente
-	 * @return
+	 * Ritorna un arraylist contenente i brani inseriti in un ciclo interattivo con l'utente.
+	 * @return ArrayList
 	 */
 	public ArrayList<Brano> creaListaBrani () {
 		MyMenu editorBrani= new MyMenu("EditorBrani", vociEditorBrani);
@@ -96,7 +102,7 @@ public class ArchivioCD {
 	}
     
     /**
-     * visualizza il contenuto di un CD
+     * Visualizza il contenuto di una lista di brani.
      * @param listaDaVisualizzare
      */
     public void visualizzaListaBrani(ArrayList<Brano> listaDaVisualizzare) {
@@ -107,6 +113,10 @@ public class ArchivioCD {
     }
     
     
+     /**
+     * Visualizza il contenuto di un CD.
+     * @param cdDaVisualizzare
+     */
     
     public void visualizzaCD (CD cdDaVisualizzare) {
 		
@@ -114,6 +124,11 @@ public class ArchivioCD {
 		
 	}
     
+	
+     /**
+     * Visualizza il contenuto di un brano.
+     * @param branoDaVisualizzare
+     */
     
     public void visualizzaBrano (Brano branoDaVisualizzare) {
     
@@ -124,7 +139,7 @@ public class ArchivioCD {
     
     
     /**
-     * elimina un cd intero dall'archivio
+     * Elimina un CD intero dall'archivio basandosi sul titolo fornito dall'utente.
      */
     public void eliminaCD() {
     	titoloCDInserito= InputDati.leggiStringaNonVuota(MSG_CD_DA_ELIMINARE);
@@ -140,7 +155,9 @@ public class ArchivioCD {
 	}
 	
     /**
-     * riproduce 3 brani a caso di un cd preso a caso tra quelli presenti nell'archivio
+     * Seleziona un'istanza casuale della classe CD ed in essa chiama il metodo adibito alla realizzazione
+     * di una playlist randomica di brani (vedi il metodo "shuffleBrani" nella classe CD).
+     * Infine chiama il metodo visualizzaListaBrani fornendogli l'ArrayList di ritorno.
      */
     public void riproduciCDaCaso () {
     	int cdIndex = NumeriCasuali.estraiIntero(0, listaCD.size());
@@ -148,7 +165,7 @@ public class ArchivioCD {
 	}
     
     /**
-     * visualizza l'intero archivio
+     * Visualizza l'intero archivio.
      */
     public void visualizzaCollezione() {
     	for (CD i: listaCD) {
