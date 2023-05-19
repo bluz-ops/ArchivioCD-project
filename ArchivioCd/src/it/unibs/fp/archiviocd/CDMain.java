@@ -12,6 +12,14 @@ public class CDMain {
 		private static String [] voci = {"Inserire nuovo CD alla collezione", "Eliminare CD dalla collezione", 
 				  "Visualizzare intera collezione ", "Riprodurre 3 brani a caso da CD a caso"};
 		
+	/**
+	* 
+	*Utilizza la classe MyMenu per gestire le interazioni con l'utente. Fa grande uso
+	* dei metodi della classe Archivio.
+	*
+	*@author Daian Stocchetti
+	*/
+	
 		public static void main (String[] args) {	
 			
 		System.out.println(SALUTO);
@@ -49,7 +57,7 @@ public class CDMain {
 			default:
 				break;
 			}
-			// System.out.println("");
+		
 
 		} while (scelta != 0);
 		
@@ -57,8 +65,9 @@ public class CDMain {
 		
 	}
 		/**
-		 * metodo che crea un'istanza della classe MyMenu
-		 * @return MyMenu
+		 * Metodo che raccoglie dall'utente tutti i dati necessari per la creazione
+		 * di una nuova istanza di tipo MyMenu.
+		 * @return new MyMenu(...)
 		 */
 		public static MyMenu creaMenuPrincipale() {
 			String titolo = InputDati.leggiStringaNonVuota(RICHIESTA);
