@@ -35,7 +35,7 @@ public class ArchivioCD {
 	private static String autoreCDInserito;
 	// private static String titoloBranoInserito;
 	// private static double durataBranoInserito;
-	private ArrayList <Brano> listaBraniInCreazione= new ArrayList<Brano>();
+	// private ArrayList <Brano> listaBraniInCreazione= new ArrayList<Brano>();
 	private int sceltaMenuBrani=0;
 	private static String [] vociEditorBrani = {"Inserire nuovo brano al CD"};
 	public static final String MSG_AGGIUNTA_SUCCESSO = "\nBrano %s aggiunto alla lista con successo\n";
@@ -48,6 +48,13 @@ public class ArchivioCD {
 		this.nomeArchivio = nomeArchivio;
 		this.listaCD = listaCD;
 	}
+	
+	
+	public ArrayList<CD> getListaCD() {
+		return listaCD;
+	}
+
+	//getter
 
 	/**
 	 * Inserisce un nuovo CD nell'archivio appoggiandosi al metodo creaCD.
@@ -78,7 +85,8 @@ public class ArchivioCD {
 	 * Ritorna un arraylist contenente i brani inseriti in un ciclo interattivo con l'utente.
 	 * @return ArrayList
 	 */
-	public ArrayList<Brano> creaListaBrani () {
+	public ArrayList<Brano> creaListaBrani() {
+		ArrayList <Brano> listaBraniInCreazione= new ArrayList<Brano>();
 		MyMenu editorBrani= new MyMenu("EditorBrani", vociEditorBrani);
 		System.out.println(MSG_INSERIMENTO_BRANI);
 		
@@ -140,18 +148,19 @@ public class ArchivioCD {
     
     /**
      * Elimina un CD intero dall'archivio basandosi sul titolo fornito dall'utente.
+     * controllo sulla presenza del cd nella lista cd
      */
     public void eliminaCD() {
     	titoloCDInserito= InputDati.leggiStringaNonVuota(MSG_CD_DA_ELIMINARE);
+    	
 		cdIndex=0;
 		while (cdIndex<listaCD.size()) {
 			if (listaCD.get(cdIndex).getTitoloCD().equalsIgnoreCase(titoloCDInserito)) {
 				listaCD.remove(cdIndex);
 			}
 			cdIndex=cdIndex+1;
-			System.out.printf(MSG_ELIMINAZIONE_SUCCESSO, titoloCDInserito);
 		}
-		
+		System.out.printf(MSG_ELIMINAZIONE_SUCCESSO, titoloCDInserito);	
 	}
 	
     /**
@@ -168,7 +177,7 @@ public class ArchivioCD {
      * Visualizza l'intero archivio.
      */
     public void visualizzaCollezione() {
-    	for (CD i: listaCD) {
+    	for (CD i: getListaCD()) {
     		System.out.println(i.toString()+"\n");	
     	}
     }

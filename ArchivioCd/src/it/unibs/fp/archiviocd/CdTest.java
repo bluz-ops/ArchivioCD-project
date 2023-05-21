@@ -1,4 +1,4 @@
-package it.unibs.ing.fp.cd;
+package it.unibs.fp.archiviocd;
 
 import static org.junit.Assert.*;
 
@@ -13,12 +13,12 @@ public class CdTest {
 
 	@Test
 	public void testToStringSenzaBrani() throws Exception {
-		assertEquals("Titolo: Anime salve, Autore: Fabrizio De Andrè, Lista dei brani:", new Cd(TITOLO, AUTORE).toString().trim());
+		assertEquals("Titolo: Anime salve, Autore: Fabrizio De Andrè, Lista dei brani:", new CD(TITOLO, AUTORE).toString().trim());
 	}
 
 	@Test
 	public void testToStringConBrani() throws Exception {
-		final Cd cd = new Cd(TITOLO, AUTORE);
+		final CD cd = new CD(TITOLO, AUTORE);
 		cd.aggiungiBrano(new Brano("Anime salve", 5, 52));
 		cd.aggiungiBrano(new Brano("Le acciughe fanno il pallone", 4, 47));
 		cd.aggiungiBrano(new Brano("Smisurata preghiera", 7, 8));

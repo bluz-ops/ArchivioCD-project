@@ -1,4 +1,4 @@
-package it.unibs.ing.fp.cd;
+package it.unibs.fp.archiviocd;
 
 import static org.junit.Assert.*;
 

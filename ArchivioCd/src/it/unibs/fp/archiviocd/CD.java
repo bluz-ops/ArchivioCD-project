@@ -34,7 +34,17 @@ public class CD {
 	public String getTitoloCD() {
 		return titoloCD;
 	}
+	public String getAutore() {
+		return autore;
+	}
+
+	public ArrayList<Brano> getListaBrani() {
+		return listaBrani;
+	}
 	
+	public void setListaBrani(ArrayList<Brano> listaBrani) {
+		this.listaBrani = listaBrani;
+	}
 	//metodi
 	
 	/**
@@ -49,6 +59,7 @@ public class CD {
 		System.out.printf(MSG_AGGIUNTA_SUCCESSO, inserimento.getTitolo());
 	} 
 	*/
+
 
 	/**
 	 * metodo che ritorna 3 brani casuali da riprodurre da un CD casuale
@@ -85,10 +96,9 @@ public class CD {
 	@Override
 	public String toString() {
 		StringBuffer descrizione = new StringBuffer();
-		descrizione.append("Titolo del CD:" + titoloCD + "\nAutore:" + autore);
+		descrizione.append("Titolo del CD:" + getTitoloCD() + "\nAutore:" + getAutore());
 		descrizione.append("\n\nLista Brani:\n");
-		for(Brano i:listaBrani) {
-			/*System.out.println(i.toString());; */
+		for(Brano i: listaBrani) {
 			descrizione.append("brano " + i.getTitolo() + "\n");
 			descrizione.append("durata " + i.getDuratam() + ":"+ i.getDuratas()+ "\n");
 			descrizione.append("\n");
