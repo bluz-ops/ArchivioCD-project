@@ -42,7 +42,7 @@ public class Brano {
 		@Override
 		public String toString(){
 			StringBuffer descrizione = new StringBuffer();
-			descrizione.append(""+titolo+ " [0" +duratam+ ":"+ duratas+ "]");
+			descrizione.append(""+titolo+ " [0" +duratam+ ":"+ duratas+ "] ");
 			return descrizione.toString();
 		}
 }

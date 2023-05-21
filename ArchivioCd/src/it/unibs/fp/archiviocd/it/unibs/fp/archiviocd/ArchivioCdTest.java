@@ -7,10 +7,10 @@ import org.junit.Test;
 public class ArchivioCdTest {
 	@Test
 	public void testAggiuntaCd() throws Exception {
-		final ArchivioCd archivio = new ArchivioCd();
-		archivio.aggiungiCd(new Cd("Anime salve", "Fabrizio De Andrè"));
-		archivio.aggiungiCd(new Cd("Storia di un impiegato", "Fabrizio De Andrè"));
-		assertEquals(2, archivio.getNumeroCd());
+		final ArchivioCD archivio = new ArchivioCD();
+		archivio.aggiungiCD(new CD("Anime salve", "Fabrizio De Andrè"));
+		archivio.inserisciCD(new CD("Storia di un impiegato", "Fabrizio De Andrè"));
+		assertEquals(2, archivio.);
 	}
 	
 	@Test
